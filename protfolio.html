@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bhanu Prasad S | Developer Portfolio</title>
+
+    <meta name="description"
+          content="The personal portfolio of Bhanu Prasad S, a BCA student exploring software development, web technologies and data science.">
+
+    <style>
+        /* ---------- GENERAL STYLES ---------- */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --background: #0a0f1c;
+            --card: #111827;
+            --text: #f1f5f9;
+            --muted: #9ca3af;
+            --accent: #38bdf8;
+            --border: #253047;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        section {
+            padding: 85px 0;
+            scroll-margin-top: 75px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .section-description {
+            text-align: center;
+            color: var(--muted);
+            margin-bottom: 42px;
+        }
+
+        .highlight {
+            color: var(--accent);
+        }
+
+        /* ---------- NAVIGATION ---------- */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 15, 28, 0.95);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        nav {
+            min-height: 72px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .menu-button {
+            display: none;
+            background: none;
+            color: var(--text);
+            border: none;
+            font-size: 1.7rem;
+            cursor: pointer;
+        }
+
+        /* ---------- HERO SECTION ---------- */
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 80px 0;
+            background:
+                radial-gradient(
+                    ellipse at 80% 20%,
+                    rgba(56, 189, 248, 0.12),
+                    transparent 45%
+                );
+        }
+
+        .hero-content {
+            max-width: 760px;
+            animation: appear 0.9s ease-out;
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.15;
+            margin: 20px 0;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.2rem, 3vw, 1.7rem);
+            color: var(--muted);
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 23px;
+            border-radius: 7px;
+            border: 1px solid var(--accent);
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button.primary {
+            background: var(--accent);
+            color: #07111d;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.15);
+        }
+
+        /* ---------- ABOUT ---------- */
+
+        .about-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 30px;
+            color: var(--muted);
+        }
+
+        .about-box p + p {
+            margin-top: 15px;
+        }
+
+        /* ---------- SKILLS ---------- */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .skill-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px 20px;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .skill-card p {
+            color: var(--muted);
+            font-size: 0.93rem;
+        }
+
+        /* ---------- PROJECTS ---------- */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 27px;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .project-number {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin: 12px 0;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #1e293b;
+            color: #bae6fd;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 3px 4px 3px 0;
+            font-size: 0.8rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- EDUCATION ---------- */
+
+        .education-card {
+            background: var(--card);
+            border-left: 3px solid var(--accent);
+            border-radius: 8px;
+            padding: 25px;
+        }
+
+        .education-card p {
+            color: var(--muted);
+        }
+
+        /* ---------- CONTACT ---------- */
+
+        .contact-box {
+            text-align: center;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 40px 25px;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            margin: 12px auto 25px;
+            max-width: 550px;
+        }
+
+        /* ---------- FOOTER ---------- */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* ---------- ANIMATIONS ---------- */
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ---------- RESPONSIVE DESIGN ---------- */
+
+        @media (max-width: 760px) {
+            .menu-button {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background: var(--background);
+                border-bottom: 1px solid var(--border);
+                flex-direction: column;
+                padding: 20px 6%;
+                gap: 15px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+
+            .hero {
+                min-height: 75vh;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                width: 90%;
+            }
+
+            .about-box,
+            .project-card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">
+                Bhanu<span class="highlight">.dev</span>
+            </a>
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="navLinks">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HOME -->
+    <main>
+        <section class="hero" id="home">
+            <div class="container hero-content">
+
+                <span class="eyebrow">
+                    BCA Student | Aspiring Software Developer
+                </span>
+
+                <h1>
+                    Hi, I'm Bhanu<br>
+                    Prasad <span class="highlight">S.</span>
+                </h1>
+
+                <h2>
+                    Building my skills, one project at a time.
+                </h2>
+
+                <p>
+                    I'm a Computer Applications student interested in
+                    software development, web technologies and data science.
+                    I enjoy learning new technologies and turning ideas
+                    into practical projects.
+                </p>
+
+                <div class="buttons">
+                    <a href="#projects" class="button primary">
+                        Explore My Projects ↗️
+                    </a>
+
+                    <a href="https://github.com/bhanuprasad-collab"
+                       class="button"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        GitHub Profile
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About <span class="highlight">Me</span></h2>
+
+                <p class="section-description">
+                    A little about my journey into technology.
+                </p>
+
+                <div class="about-box">
+                    <p>
+                        I'm Bhanu Prasad S, a Bachelor of Computer
+                        Applications (BCA) student at SEA College of
+                        Science, Commerce and Arts, affiliated with
+                        Bengaluru North University.
+                    </p>
+
+                    <p>
+                        My interests include programming, website
+                        development, problem-solving and data science.
+                        I'm continuously working to strengthen my
+                        technical foundation through learning and
+                        hands-on practice.
+                    </p>
+
+                    <p>
+                        My current goal is to build meaningful projects,
+                        improve my coding skills and prepare for
+                        opportunities in software development.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">
+                    Technical <span class="highlight">Skills</span>
+                </h2>
+
+                <p class="section-description">
+                    Technologies I'm learning and working with.
+                </p>
+
+                <div class="skills-grid">
+
+                    <article class="skill-card">
+                        <div class="skill-icon">🌐</div>
+                        <h3>HTML & CSS</h3>
+                        <p>
+                            Creating web page structures, layouts
+                            and responsive designs.
+                        </p>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-icon">🐍</div>
+                        <h3>Python</h3>
+                        <p>
+                            Practising programming fundamentals,
+                            logic and problem-solving.
+                        </p>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-icon">☕</div>
+                        <h3>Java</h3>
+                        <p>
+                            Learning object-oriented programming
+                            and core programming concepts.
+                        </p>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-icon">📊</div>
+                        <h3>Data Science</h3>
+                        <p>
+                            Exploring data analysis and
+                            data-driven problem-solving.
+                        </p>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-icon">🧩</div>
+                        <h3>Problem-Solving</h3>
+                        <p>
+                            Developing logical thinking through
+                            programming exercises.
+                        </p>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-icon">🔧</div>
+                        <h3>Git & GitHub</h3>
+                        <p>
+                            Learning version control and
+                            maintaining coding projects.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">
+                    Featured <span class="highlight">Projects</span>
+                </h2>
+
+                <p class="section-description">
+                    A selection of my learning and development work.
+                </p>
+
+                <div class="projects-grid">
+
+                    <article class="project-card">
+                        <span class="project-number">PROJECT 01</span>
+
+                        <h3>Personal Portfolio Website</h3>
+
+                        <p>
+                            A responsive portfolio introducing my
+                            background, technical skills, education
+                            and development journey.
+                        </p>
+
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+
+                        <br>
+
+                        <a
+                            class="project-link"
+                            href="https://github.com/bhanuprasad-collab"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            View on GitHub ↗️
+                        </a>
+                    </article>
+
+                    <article class="project-card">
+                        <span class="project-number">PROJECT 02</span>
+
+                        <h3>Hard Skills vs Soft Skills</h3>
+
+                        <p>
+                            A website concept explaining the difference
+                            between technical abilities and interpersonal
+                            skills, with practical examples.
+                        </p>
+
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+
+                        <br>
+
+                        <a
+                            class="project-link"
+                            href="https://github.com/bhanuprasad-collab"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            View on GitHub ↗️
+                        </a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education">
+            <div class="container">
+                <h2 class="section-title">
+                    My <span class="highlight">Education</span>
+                </h2>
+
+                <p class="section-description">
+                    My academic background.
+                </p>
+
+                <div class="education-card">
+                    <h3>Bachelor of Computer Applications (BCA)</h3>
+
+                    <p>SEA College of Science, Commerce and Arts</p>
+
+                    <p>Bengaluru North University</p>
+
+                    <p>Expected Graduation: 2027</p>
+
+                    <p>
+                        Academic CGPA: 8.1+ (update with your latest result)
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="container">
+                <div class="contact-box">
+                    <h2 class="section-title">
+                        Let's <span class="highlight">Connect</span>
+                    </h2>
+
+                    <p>
+                        I'm interested in learning from developers,
+                        collaborating on projects and exploring
+                        software development opportunities.
+                    </p>
+
+                    <div class="buttons" style="justify-content:center;">
+
+                        <a
+                            href="https://github.com/bhanuprasad-collab"
+                            class="button primary"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            GitHub ↗️
+                        </a>
+
+                        <a
+                            href="https://www.linkedin.com/"
+                            class="button"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            LinkedIn ↗️
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            © <span id="year"></span> Bhanu Prasad S.
+            Built with HTML, CSS & JavaScript.
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Automatically update the copyright year
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        // Mobile navigation menu
+        const menuButton = document.getElementById("menuButton");
+        const navLinks = document.getElementById("navLinks");
+
+        menuButton.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("active");
+
+            menuButton.setAttribute("aria-expanded", isOpen);
+            menuButton.textContent = isOpen ? "✕" : "☰";
+        });
+
+        // Close the menu after selecting a section
+        document.querySelectorAll(".nav-links a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+                menuButton.setAttribute("aria-expanded", "false");
+                menuButton.textContent = "☰";
+            });
+        });
+    </script>
+
+</body>
+</html>
